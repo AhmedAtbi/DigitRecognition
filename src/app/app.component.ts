@@ -15,8 +15,8 @@ export class AppComponent implements OnInit, AfterViewInit{
   @Input() public height = 400;
   @ViewChild('canvas') public canvas: ElementRef;
 
-  private model;
-  private context: CanvasRenderingContext2D;
+  public model;
+  public context: CanvasRenderingContext2D;
   public title = ''
   public predicted = '';
 
@@ -26,12 +26,12 @@ export class AppComponent implements OnInit, AfterViewInit{
   /// Loading the model.ng s
   public async ngOnInit(): Promise<void> {
 
-    this.title = 'Loading model, please wait...';
+    this.title = 'Wait please.. Model is training';
 
     this.model = await tf.loadLayersModel('http://localhost:3000/model.json')
     console.log(this.model.summary());
     
-    this.title = 'Model Trained! Write down digits!';
+    this.title = 'Done! Write down digits!';
   }
 
   /// Used to configure canvas properties.
@@ -49,15 +49,14 @@ export class AppComponent implements OnInit, AfterViewInit{
       this.captureEvents(canvasHtmlElement);
   }
 
-  /// Clears the canvas and the information on the screen.
+  // Clear Canvas
   public clear(): void {
     this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+    
     this.predicted = '';
   }
 
-  /// Captures events from the canvas.
-  /// Based on the type of the event (mousedown, mouseup, etc.) performs certain actions.
-  /// In charge of drawing images on canvas and runing the model predictions once digit is drawn.
+  // Capture de l'evenement provenant du canvas
   private captureEvents(canvasHtmlElement: HTMLCanvasElement) {
       // Draw image.
       fromEvent(canvasHtmlElement, 'mousedown')

@@ -1,20 +1,23 @@
 <div class="toolbar" role="banner">
+
   <img
-    width="55"
-    src="https://i.imgur.com/WQKir0M.png"
+    height="100"
+    width="632"
+    src="https://thumbs.dreamstime.com/b/learn-play-word-concepts-banner-learn-play-word-concepts-banner-school-activity-children-entertainment-education-176723918.jpg"
   />
-  <span>Tensorflow.js and Angular Integration</span>
-  <div class="spacer"></div>
+  
 </div>
-<h2>
-  {{title}}
-</h2>
-<div>
-  <canvas class="canvas" #canvas ></canvas>
+
+  
+
+<div class="jumbotron col-md-6 col-md-offset-2">
+  <h3 class="text-success col-md-10 col-md-offset-2">Prediction : {{predicted}}</h3><br>
+  <canvas class="canvas col-md-10 col-md-offset-2" #canvas ></canvas>
+  <br><br>
+  <button type="button" (click)="clear()" class="btn btn-success col-md-10 col-md-offset-4">CLEAR</button>
+  
 </div>
-<div style="width: 400px">
-  <button class="block" (click)="clear()">Clear</button>
-</div>
-<div>
-  <h2>Predicted: {{predicted}}</h2>
-</div>
+
+ 
+  
+
